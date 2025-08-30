@@ -1,0 +1,4 @@
+apiVersion: v2
+name: g-oss-ot-mirror
+version: 0.1.0
+appVersion: "0.1.0"

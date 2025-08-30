@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  mosquitto:
+    image: eclipse-mosquitto:2
+    ports: ["1883:1883"]
+  telegraf:
+    image: telegraf:1.30
+    environment:
+      - HOST_ETC=/etc
+    volumes:
+      - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
+    depends_on: [mosquitto]
+  victoriametrics:
+    image: victoriametrics/victoria-metrics:latest
+    ports: ["8428:8428"]
